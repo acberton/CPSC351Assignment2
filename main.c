@@ -25,7 +25,7 @@ void mainLoop() {
         time++;
         
         if (time > MAX_TIME) {
-            printf("DEADLOCK: reached maximum time\n")
+            printf("DEADLOCK: reached maximum time\n");
             break;
         }
 
@@ -43,7 +43,7 @@ int main() {
 
     getInput(&memSize, &pageSize, filePath);
 
-    queue = createProcessQueue(n)
+    queue = createProcessQueue(n);
 
     frList = createFrameList(memSize / pageSize, pageSize);
     mainLoop();
@@ -136,7 +136,8 @@ void printAvgTurnAround() {
 }
 
 void isMultOfHundred(int t) {
-    return (t % 100) == 0 ? 1 : 0;
+    int total =  (t % 100) == 0 ? 1 : 0;
+    return total;
 }
 
 void isOneTwoOrThree(int t) {
