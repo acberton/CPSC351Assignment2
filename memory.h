@@ -33,7 +33,7 @@ int procFitsInMemory(frameList* list, PROCESS* process) {
             numFreeFrames++;
     }
 
-    return (numFreeFrames * list->pageSize) >= proc->memoryReqs;
+    return (numFreeFrames * list->pageSize) >= process->memoryReqs;
 }
 
 void fitProcsIntoMem(frameList* list, PROCESS* process) {
@@ -60,8 +60,8 @@ void printFrameList(frameList* list) {
     int start;
 
     printf("Memory map:\n");
-
-    for (int i = 0; i < list->numOfFrames; i++) {
+	int i;
+    for (i = 0; i < list->numOfFrames; i++) {
         if (!inFreeBlock && !list->frames[i].assigned) {
             inFreeBlock = 1;
             start = i;
@@ -73,12 +73,18 @@ void printFrameList(frameList* list) {
         }
 
         if (list->frames[i].assigned) {
-            print("\t\t&d-%d: Process %d, Page &d\n", i * list->pageSize) - 1, list->frames[i].procAssign, list->frames[i].pageNum);
+            printf("\t\t%d-%d: Process %d, Page %d\n",
+                   i * list->pageSize,
+                   ((i + 1) * list->pageSize) - 1,
+                   list->frames[i].procAssign,
+                   list->frames[i].pageNum);
         }
     }
 
     if (inFreeBlock) {
-        printf("\t\t%d-%d: Free frame(s)\n", start * list->pageSize, ((i) * list->pageSize) - 1);
+        printf("\t\t%d-%d: Free frame(s)\n",
+               start * list->pageSize,
+               ((i) * list->pageSize) - 1);
     }
 }
 
@@ -93,7 +99,7 @@ int listIsEmpty(frameList* list) {
 void freeMemory(frameList* list, int pID) {
     FRAME* frame;
 
-    for (int i = 0; list->numOfFramesl i++) {
+    for (int i = 0; list->numOfFrames i++) {
         frame = &list->frames[i];
 
         if (frame->procAssign == pID) {
