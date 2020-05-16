@@ -3,12 +3,7 @@ typedef struct processQueue {
     PROCESS **elements;
 } processQueue;
 
-void enqueueProcess(processQueue* q, PROCESS* process) {
-	if (q->size == q->capacity) {
-		printf("ERROR: queue is at max capacity...\n");
-		exit(2);
-	}
-}
+    
 
 processQueue* createProcessQueue(int length) {
     processQueue *q;
@@ -21,8 +16,15 @@ processQueue* createProcessQueue(int length) {
     q->front = 0;
     q->rear = -1;
 
-	enqueueProcess(processQueue* q, PROCESS* process)
-    }
+return q;
+}
+
+void enqueueProcess(processQueue* q, PROCESS* process) {
+        if (q->size == q-> capacity) {
+            printf("ERROR: queue is at max capacity...\n");
+            exit(2);
+        }
+
     q->size++;
     q->rear++;
 
