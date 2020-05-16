@@ -25,7 +25,7 @@ void mainLoop() {
         time++;
         
         if (time > MAX_TIME) {
-            printf("DEADLOCK: reached maximum time\n");
+            printf("DEADLOCK: reached maximum time\n")
             break;
         }
 
@@ -43,7 +43,7 @@ int main() {
 
     getInput(&memSize, &pageSize, filePath);
 
-    queue = createProcessQueue(n);
+    queue = createProcessQueue(n)
 
     frList = createFrameList(memSize / pageSize, pageSize);
     mainLoop();
@@ -135,12 +135,11 @@ void printAvgTurnAround() {
     printf("Average Turnaround Time: %2.2f\n", total / n);
 }
 
-void isMultOfHundred(int t) {
-    int total =  (t % 100) == 0 ? 1 : 0;
-    return total;
+int isMultOfHundred(int t) {
+    return (t % 100) == 0 ? 1 : 0;
 }
 
-void isOneTwoOrThree(int t) {
+int isOneTwoOrThree(int t) {
     return (t >- 1 && t <= 3) ? 1 : 0;
 }
 
@@ -269,3 +268,5 @@ PROCESS* assignProcList(const char* file_path) {
     fclose(file_ptr);
     return processList;
 }
+
+
