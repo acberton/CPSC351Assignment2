@@ -90,6 +90,7 @@ void terminateProc(int time) {
 
 void assignMemory(int time) {
     int index, limit;
+PROCESS* process;
     limit = queue->size;
 
     for (int i = 0; i < limit; i++) {
@@ -267,5 +268,3 @@ PROCESS* assignProcList(const char* file_path) {
     fclose(file_ptr);
     return processList;
 }
-
-
