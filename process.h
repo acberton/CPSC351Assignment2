@@ -1,7 +1,7 @@
-#idndef Process_h
+#ifndef Process_h
 #define Process_h
 
-typedef Struct {
+typedef struct{
     int pID, arrivalTime, lifeTime, memoryReqs, timeAdded, isActive, timeFinished;
 } PROCESS;
 
