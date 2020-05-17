@@ -248,7 +248,7 @@ PROCESS* assignProcList(const char* file_path) {
         exit(1);
     }
 
-    while (!EOF(file_ptr) && counter < n) {
+    while (!feof(file_ptr) && counter < n) {
         fscanf(file_ptr, "%d %d %d %d", &(processList[counter].pID), &(processList[counter].arrivalTime), &(processList[counter].lifeTime), &numSpace);
 
         total_space = 0;
